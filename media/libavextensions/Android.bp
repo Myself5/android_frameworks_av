@@ -1,3 +1,23 @@
+bootstrap_go_package {
+    name: "soong-mediaextentions",
+    pkgPath: "android/soong/mediaextentions",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+    ],
+    srcs: [
+        "mediaextentions.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+mediaextentions_defaults {
+    name: "mediaextentions_defaults",
+}
+
 cc_library_static {
 
     srcs: [
@@ -15,7 +35,6 @@ cc_library_static {
         "frameworks/native/include/media/openmax",
         "external/flac/include",
         "system/core/base/include",
-        "hardware/qcom/media/mm-core/inc",
     ],
 
     shared_libs: [
@@ -37,6 +56,7 @@ cc_library_static {
         "-Werror",
     ],
 
+    defaults: ["mediaextentions_defaults"],
     name: "libavextensions",
 
 }
@@ -54,7 +74,6 @@ cc_library_static {
         "frameworks/native/include/media/hardware",
         "frameworks/native/include/media/openmax",
         "external/flac/include",
-        "hardware/qcom/media/mm-core/inc",
     ],
 
     shared_libs: [
@@ -69,6 +88,7 @@ cc_library_static {
         "-Werror",
     ],
 
+    defaults: ["mediaextentions_defaults"],
     name: "libavmediaextentions",
 
 }
@@ -94,7 +114,6 @@ cc_library_static {
         "frameworks/native/include/media/openmax",
         "external/flac/include",
         "system/core/base/include",
-        "hardware/qcom/media/mm-core/inc",
     ],
 
     shared_libs: [
@@ -115,6 +134,7 @@ cc_library_static {
         "-Werror",
     ],
 
+    defaults: ["mediaextentions_defaults"],
     name: "libavmediaserviceextensions",
 
 }
